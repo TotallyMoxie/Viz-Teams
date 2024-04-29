@@ -1,0 +1,10 @@
+.info-card {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 4rem);
+  width: 40vw;
+  margin: 2rem;
+  padding: 1rem;
+}
