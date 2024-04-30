@@ -1,5 +1,4 @@
-
-.container-wrapper {
+.team-container-wrapper {
   display: flex;
   flex-direction: row;
   height: 80%;
@@ -11,6 +10,14 @@
   margin-right: auto;
 }
 
+
+
+.container-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  width: 100%;
+}
 
 .info-card {
   margin-left: auto;
