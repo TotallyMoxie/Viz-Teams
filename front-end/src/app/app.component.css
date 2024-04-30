@@ -1,25 +1,11 @@
-.team-container-wrapper {
+.wrapper {
   display: flex;
   flex-direction: row;
   height: 80%;
   width: 100%;
 }
 
-.team-list {
-  margin-left: 0;
-  margin-right: auto;
-}
-
-
-
-.container-wrapper {
-  display: flex;
-  flex-direction: row;
-  height: 80%;
-  width: 100%;
-}
-
-.info-card {
+.card {
   margin-left: auto;
   margin-right: 0;
 }

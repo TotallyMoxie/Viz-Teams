@@ -8,7 +8,6 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -56,7 +55,6 @@ export class SignUpComponent {
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
-    BrowserAnimationsModule,
   ],
 })
 export class SignUpComponentDialog {
