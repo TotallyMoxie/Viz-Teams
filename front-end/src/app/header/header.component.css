@@ -1,0 +1,38 @@
+.mat-toolbar {
+  height: 64px;
+  line-height: 64px;
+  background-color: #ff4e00;
+  color: #f5f5f5;
+}
+
+.logo {
+  height: 100%;
+  width: 7%;
+  margin-right: 16px;
+}
+
+.logo-border {
+  border-right: 2px solid #cc3e00;
+  height: 48px;
+  margin-right: 16px;
+}
+
+
+.logo + .app-name {
+  margin-left: 16px;
+}
+
+
+.app-name {
+  white-space: nowrap;
+}
+
+
+.spacer {
+  flex: 1;
+}
+
+.username {
+  margin-left: auto;
+  margin-right: 16px;
+}
