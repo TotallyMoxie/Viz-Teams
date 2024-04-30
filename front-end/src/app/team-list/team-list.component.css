@@ -8,9 +8,16 @@
 .team-list {
   font-size: 24px;
   display: flex;
-  height: calc(100% - 4rem);
+  height: 80vh;
   width: 40vw;
   margin: 2rem;
-  padding: 1rem;
   overflow-y: auto;
+}
+
+/* .header{
+  padding:
+} */
+
+.divider {
+  width: 100%;
 }
