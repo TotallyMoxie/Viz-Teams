@@ -1,0 +1,23 @@
+/* .team-container-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  width: 50%;
+} */
+
+.team-list {
+  font-size: 24px;
+  display: flex;
+  height: 80vh;
+  width: 40vw;
+  margin: 2rem;
+  overflow-y: auto;
+}
+
+/* .header{
+  padding:
+} */
+
+.divider {
+  width: 100%;
+}

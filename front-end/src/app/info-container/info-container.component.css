@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 4rem);
+  height: calc(100% - 1rem);
   width: 40vw;
   margin: 2rem;
-  padding: 1rem;
+  padding: 3rem;
 }
