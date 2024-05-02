@@ -1,23 +1,16 @@
-/* .team-container-wrapper {
-  display: flex;
-  flex-direction: row;
-  height: 80%;
-  width: 50%;
-} */
-
 .team-list {
-  font-size: 24px;
+  font-size: 40px;
   display: flex;
-  height: 80vh;
-  width: 40vw;
-  margin: 2rem;
+  height: 85vh;
+  width: 50vw;
+  margin: 5%;
   overflow-y: auto;
 }
 
-/* .header{
-  padding:
-} */
+
 
 .divider {
   width: 100%;
+  margin-top: 1.5rem;
+
 }
