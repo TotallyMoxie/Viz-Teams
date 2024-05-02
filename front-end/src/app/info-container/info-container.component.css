@@ -1,10 +1,12 @@
-.info-card {
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100% - 1rem);
-  width: 40vw;
-  margin: 2rem;
-  padding: 3rem;
-}
+ .info-card {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 44vw;
+    position: absolute; /* Add position absolute */
+    right: 1.5%;
+    top: 12%;
+  }
+
