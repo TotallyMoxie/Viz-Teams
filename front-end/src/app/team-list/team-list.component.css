@@ -14,3 +14,19 @@
   margin-top: 1.5rem;
 
 }
+
+.divider2 {
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+}
+
+.action-row {
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
