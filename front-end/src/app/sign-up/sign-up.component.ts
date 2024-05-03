@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -9,9 +9,17 @@ import {
   MatDialogClose,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/User.model';
 
 export interface DialogData {
   animal: string;
@@ -28,7 +36,8 @@ export interface DialogData {
 export class SignUpComponent {
   animal: string = '';
   name: string = '';
-  constructor(public dialog: MatDialog) {}
+
+  constructor(private dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SignUpComponentDialog, {
@@ -55,15 +64,47 @@ export class SignUpComponent {
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
+    ReactiveFormsModule,
   ],
 })
-export class SignUpComponentDialog {
+export class SignUpComponentDialog implements OnInit {
+  public name: string;
+  public animal: string;
+  public signupForm: FormGroup;
+
   constructor(
+    public authService: AuthService,
+    public dialog: MatDialog,
     public dialogRef: MatDialogRef<SignUpComponentDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
+  ngOnInit() {
+    this.signupForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl(''),
+    });
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  formValid() {
+    if (this.signupForm.invalid) {
+      return true;
+    }
+    return false;
+  }
+
+  onSubmit() {
+    const signupForm = this.signupForm.getRawValue();
+    this.authService
+      .signup(signupForm.email, signupForm.password)
+      .subscribe((res) => {
+        const { email, id } = res;
+        const user = new User(email, id);
+        this.authService.user.next(user);
+      });
   }
 }
