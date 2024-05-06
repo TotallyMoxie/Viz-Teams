@@ -7,7 +7,7 @@ import { User } from './User.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private backendUrlString = 'http://localhost:3000/api/v1/auth/login';
+  private backendUrlString = 'http://localhost:3000';
   public user = new BehaviorSubject<User | null>(null);
   public currentUser = this.user.asObservable();
 
@@ -15,7 +15,7 @@ export class AuthService {
 
   signup(email: string, password: string): Observable<any> {
     return this.http.post(
-      this.backendUrlString,
+      `${this.backendUrlString}/api/v1/auth/register`,
       { email, password },
       { withCredentials: true }
     );
