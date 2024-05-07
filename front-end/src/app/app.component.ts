@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TeamListComponent } from './team-list/team-list.component';
 import { InfoContainerComponent } from './info-container/info-container.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Header } from "../app/header/header.component";
+import { Header } from '../app/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { Header } from "../app/header/header.component";
     InfoContainerComponent,
     MatToolbarModule,
     Header,
+    SignUpComponent,
   ],
 
   templateUrl: './app.component.html',
