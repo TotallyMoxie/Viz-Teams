@@ -26,6 +26,7 @@ const corsOptions = {
 	allowedHeaders: ["Content-Type", "Authorization"],
 	credentials: true,
 };
+console.log(corsOptions.origin);
 
 // * METHODS
 const sanitize = (req, res, next) => {
