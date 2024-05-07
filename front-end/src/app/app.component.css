@@ -9,3 +9,21 @@
   margin-left: auto;
   margin-right: 0;
 }
+
+.team-list {
+  margin: 24px,18px,24px,24px;
+}
+
+
+
+.container-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  width: 100%;
+}
+
+.info-card {
+  margin-left: auto;
+  margin-right: 0;
+}
