@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from './User.model';
+import { environment } from '../../environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private backendUrlString = 'http://localhost:3000';
+  private backendUrlString = environment.backendUrl;
   public user = new BehaviorSubject<User | null>(null);
   public currentUser = this.user.asObservable();
 
