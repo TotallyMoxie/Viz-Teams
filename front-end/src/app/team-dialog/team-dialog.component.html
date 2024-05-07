@@ -1,18 +1,20 @@
 
-  <ol>
-    <li>
-      <mat-form-field>
-        <mat-label>Team Name</mat-label>
-        <input matInput [(ngModel)]="teamName">
-      </mat-form-field>
 
-    </li>
-    <li>
+ <mat-dialog-content>
+  <mat-form-field>
+        <mat-label>Team Name</mat-label>
+        <input class="teamNames" matInput [(ngModel)]="teamName">
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-content>
       <mat-form-field>
         <mat-label>Team Description</mat-label>
-        <input matInput [(ngModel)]="description">
+        <input class="TeamDescriptions" matInput [(ngModel)]="description" placeholder="Team Description">
       </mat-form-field>
-    </li>
+    </mat-dialog-content>
 
-  </ol>
-
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close class="cancel">Cancel</button>
+        <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+        <button mat-button [mat-dialog-close]="true" class="submit">Submit</button>
+      </mat-dialog-actions>

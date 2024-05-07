@@ -7,15 +7,17 @@ import {
   MatDialogContent,
   MatDialogActions,
   MatDialogClose,
+  MatDialogModule,
 } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Text } from '@angular/compiler';
 
 export interface DialogData {
   teamName: string;
-  description: string;
+  description: Text;
 
 }
 
@@ -26,13 +28,12 @@ export interface DialogData {
   selector: 'app-team-list',
   templateUrl: 'team-dialog.component.html',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatDialogModule],
+  styleUrl: './team-dialog.component.css'
 })
 export class DialogOverviewExample {
   teamName: string | undefined;
-  description: string | undefined;
-
-
+  description: Text | undefined;
 
   constructor(public dialog: MatDialog) {}
 
@@ -63,10 +64,11 @@ export class DialogOverviewExample {
     MatDialogActions,
     MatDialogClose,
   ],
+  styleUrl: './team-dialog.component.css'
 })
 export class DialogOverviewExampleDialog {
-description: any;
-teamName: any;
+description: Text | undefined;
+teamName: string | undefined;
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
