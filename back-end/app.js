@@ -21,7 +21,7 @@ const limiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 const corsOptions = {
-	origin: process.env.CORS_ORIGIN,
+	origin: process.env.FRONTEND_URL,
 	methods: ["GET", "POST", "PUT", "DELETE"],
 	allowedHeaders: ["Content-Type", "Authorization"],
 	credentials: true,

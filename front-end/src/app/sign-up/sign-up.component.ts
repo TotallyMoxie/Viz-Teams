@@ -105,6 +105,7 @@ export class SignUpComponentDialog implements OnInit {
         const { email, _id: id } = res.data.user;
         const user = new User(email, id);
         this.authService.user.next(user);
+        this.dialogRef.close();
       });
   }
 }

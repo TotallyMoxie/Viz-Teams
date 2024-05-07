@@ -23,7 +23,7 @@ router.post("/verify", verifyEmail); // Verify email
 router.post("/resend-verification", resendVerification);
 router.post("/reset-password", resetPass); // Reset password
 router.get("/me", authenticateUser, me); // Get user details
-router.delete("/delete-user/:id", deleteUser); // Delete user
+router.delete("/:id", deleteUser); // Delete user
 router.get("/getall", getAllUsers);
 // * EXPORTS
 module.exports = router;

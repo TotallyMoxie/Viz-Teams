@@ -29,21 +29,50 @@ const registerUser = async (req, res) => {
 	// Create a new user
 	const user = await User.create({
 		email,
-		password,
-		verificationToken,
+		password
 	});
 
 	let frontendUrlString = "http://localhost:4200";
 	// TODO: Set this to the server URL depending on the environment
 
 	// Send a verification email
-	await sendVerificationEmail({
+	/* await sendVerificationEmail({
 		email: user.email,
 		verificationToken: user.verificationToken,
 		frontendUrl: frontendUrlString,
-	});
+	}); */
 
-	return res.status(200).json({ data: { user } }); // Send a 200 response with the user
+	const tokenUser = { userId: user._id, email: user.email }; // Create a token user
+	let refreshToken = ""; // Create a refresh token
+
+	const existingToken = await Token.findOne({ user: user._id }); // Find an existing token
+
+	// If the token exists, check if it's valid
+	if (existingToken) {
+		const { isValid } = existingToken; // Destructure the isValid property from the existing token
+
+		// If the token isn't valid, send a 401 response
+		if (!isValid) {
+			return res.status(401).json({ message: "Unauthorized" });
+		}
+
+		refreshToken = existingToken.refreshToken; // Set the refresh token to the existing token's refresh token
+
+		attachCookies({ res, user: tokenUser, refreshToken }); // Attach the cookies
+		console.log(tokenUser)
+		return res.status(200).json({ data: { user: {email} } }); // Send a 200 response with the user
+	}
+
+	// If the token doesn't exist, create a new refresh token
+	refreshToken = crypto.randomBytes(40).toString("hex");
+	const userAgent = req.headers["user-agent"]; // Get the user agent
+	const ip = req.ip; // Get the IP address
+	const userToken = { refreshToken, ip, userAgent, user: user._id }; // Create a user token
+
+	await Token.create(userToken); // Create the token
+
+	attachCookies({ res, user: tokenUser, refreshToken }); // Attach the cookies
+	res.status(200).json({ data: { user: tokenUser } }); // Send a 200 response with the user
 };
 
 // CONTROLLER: Login User
@@ -67,11 +96,6 @@ const loginUser = async (req, res) => {
 	// If the password is incorrect, send a 401 response
 	if (!isPassCorrect) {
 		return res.status(401).json({ message: "Email or password not valid" });
-	}
-
-	// If the user isn't verified, send a 401 response
-	if (!user.isVerified) {
-		return res.status(401).json({ message: "Email not verified" });
 	}
 
 	const tokenUser = { userId: user._id, role: user.role }; // Create a token user

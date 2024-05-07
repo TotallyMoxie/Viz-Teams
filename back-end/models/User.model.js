@@ -21,18 +21,6 @@ const UserSchema = new Schema({
 		require: [true, "Password is required"],
 		minLength: 8,
 	},
-	devices: {
-		type: [Types.ObjectId],
-		ref: "device",
-	},
-	isVerified: {
-		type: Boolean,
-		default: false,
-	},
-	verificationToken: String,
-	verifiedOn: Date,
-	passwordResetToken: String,
-	passwordResetExpiration: Date,
 });
 
 // * HOOKS
