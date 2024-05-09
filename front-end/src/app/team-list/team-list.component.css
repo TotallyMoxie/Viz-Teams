@@ -18,6 +18,11 @@ mat-card-content{
   width: 110%;
 }
 
+mat-expansion-panel {
+display: contents;
+border-bottom: 1px solid;
+}
+
 .divider2 {
   width: 100%;
   bottom: 50px;
@@ -29,6 +34,7 @@ mat-card-content{
   right: 5px;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 
