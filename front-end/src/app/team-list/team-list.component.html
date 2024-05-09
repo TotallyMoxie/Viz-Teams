@@ -4,16 +4,29 @@
 
   <mat-divider class="divider"></mat-divider>
 
-  <mat-card-content></mat-card-content>
+  <mat-card-content>
+    <mat-expansion-panel *ngFor="let team of teams">
+      <mat-expansion-panel-header  class="expansionList">
+        {{team.name}}
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+        <div *ngFor="let member of team.members">
+          <img class="memberIcon" *ngIf="member.picture" src="{{ member.picture }}" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
+          <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
 
-  <mat-card-content></mat-card-content>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel>
+
+
+  </mat-card-content>
 
   <mat-divider class="divider2"></mat-divider>
 
   <div class="action-row">
     <mat-action-row>
       <button (click)="openDialog()" class="add-button" mat-button matTooltip="Add Team" >
-        <mat-icon>add_box</mat-icon>
+        <mat-icon class="addBox">add_box</mat-icon>
       </button>
     </mat-action-row>
   </div>

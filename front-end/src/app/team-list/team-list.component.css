@@ -4,20 +4,27 @@
   height: 85vh;
   width: 50vw;
   margin: 5%;
-  overflow-y: auto;
 }
-
-
 
 .divider {
   width: 100%;
   margin-top: 1.5rem;
 
 }
+mat-card-content{
+  padding: 0%;
+}
+.expansionPanel{
+  width: 110%;
+}
+
+mat-expansion-panel {
+display: contents;
+border-bottom: 1px solid;
+}
 
 .divider2 {
   width: 100%;
-  position: absolute;
   bottom: 50px;
 }
 
@@ -27,6 +34,14 @@
   right: 5px;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
+
+.memberIcon {
+  margin-right: 5px;
+  margin-left: 5px;
+  height: auto;
+  width: 50px;
+}
 
