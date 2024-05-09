@@ -9,7 +9,13 @@
       <mat-expansion-panel-header  class="expansionList">
         {{team.name}}
       </mat-expansion-panel-header>
-      <mat-panel-description></mat-panel-description>
+      <mat-panel-description>
+        <div *ngFor="let member of team.members">
+          <img class="memberIcon" *ngIf="member.picture" src="{{ member.picture }}" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
+          <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
+
+        </div>
+      </mat-panel-description>
     </mat-expansion-panel>
 
 

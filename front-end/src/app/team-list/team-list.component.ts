@@ -32,8 +32,34 @@ import { CommonModule } from '@angular/common';
 })
 export class TeamListComponent {
   teams: any[] = [
-    { name: 'Team A', members: ['Alice', 'Bob', 'Charlie'] },
-    { name: 'Team B', members: ['David', 'Eve', 'Frank'] },
+    {
+      name: 'Team A',
+      members: [
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' },
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' },
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' },
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' },
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' }
+      ]
+    },
+    {
+      name: 'Team B',
+      members: [
+        { name: 'David', image: '' },
+        { name: 'Eve', image: '' },
+        { name: 'Frank', image: '' }
+      ]
+    },
   ];
   constructor(public dialog: MatDialog) {}
 
