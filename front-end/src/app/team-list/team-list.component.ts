@@ -46,9 +46,6 @@ export class TeamListComponent {
         { name: 'Charlie', image: '' },
         { name: 'Alice', image: '' },
         { name: 'Bob', image: '' },
-        { name: 'Charlie', image: '' },
-        { name: 'Alice', image: '' },
-        { name: 'Bob', image: '' },
         { name: 'Charlie', image: '' }
       ]
     },
