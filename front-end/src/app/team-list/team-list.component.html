@@ -4,9 +4,16 @@
 
   <mat-divider class="divider"></mat-divider>
 
-  <mat-card-content></mat-card-content>
+  <mat-card-content>
+    <mat-expansion-panel *ngFor="let team of teams">
+      <mat-expansion-panel-header  class="expansionList">
+        {{team.name}}
+      </mat-expansion-panel-header>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel>
 
-  <mat-card-content></mat-card-content>
+
+  </mat-card-content>
 
   <mat-divider class="divider2"></mat-divider>
 
