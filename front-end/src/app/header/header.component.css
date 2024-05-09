@@ -36,3 +36,14 @@
   margin-left: auto;
   margin-right: 16px;
 }
+
+
+.sign-up{
+ padding-right: .5rem;
+ padding-left: .5rem;
+}
+
+.sign-in{
+ padding-left: .5rem;
+ padding-right: .5rem;
+}
