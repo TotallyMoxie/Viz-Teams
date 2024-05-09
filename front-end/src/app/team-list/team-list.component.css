@@ -6,12 +6,16 @@
   margin: 5%;
 }
 
-
-
 .divider {
   width: 100%;
   margin-top: 1.5rem;
 
+}
+mat-card-content{
+  padding: 0%;
+}
+.expansionPanel{
+  width: 110%;
 }
 
 .divider2 {
