@@ -4,7 +4,6 @@
   height: 85vh;
   width: 50vw;
   margin: 5%;
-  overflow-y: auto;
 }
 
 
@@ -17,7 +16,6 @@
 
 .divider2 {
   width: 100%;
-  position: absolute;
   bottom: 50px;
 }
 
