@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SignUpComponentDialog } from '../sign-up/sign-up.component';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../auth/User.model';
+import { SignInComponentDialog } from '../sign-in/sign-in.component';
 
 @Component({
   selector: 'app-Header',
@@ -23,9 +24,13 @@ export class Header implements OnInit {
   ngOnInit() {
     this.authService.currentUser.subscribe((user) => {
       this.user = user;
+      console.log(this.user);
     });
   }
-  openDialog(): void {
+  openSignUp(): void {
     const dialogRef = this.dialog.open(SignUpComponentDialog);
+  }
+  openSignIn(): void {
+    const dialogRef = this.dialog.open(SignInComponentDialog);
   }
 }

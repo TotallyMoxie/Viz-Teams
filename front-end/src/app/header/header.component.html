@@ -8,7 +8,8 @@
 
   <span class="spacer"></span>
   @if(!this.user){
-  <div (click)="openDialog()">Sign Up</div>
+  <div (click)="openSignUp()" class="sign-up">Sign Up</div>
+  <div (click)="openSignIn()" class ="sign-in">Sign In</div>
   } @else{
   <div>{{ this.user.email }}</div>
   }

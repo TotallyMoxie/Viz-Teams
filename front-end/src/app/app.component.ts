@@ -5,6 +5,8 @@ import { InfoContainerComponent } from './info-container/info-container.componen
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Header } from '../app/header/header.component';
+import { AuthService } from './auth/auth.service';
+import { User } from './auth/User.model';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +23,16 @@ import { Header } from '../app/header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'front-end';
+  constructor(private authService: AuthService) {}
+  ngOnInit(): void {
+      this.authService.authenticate().subscribe((res) => {
+        const user = new User(res.data.user.email, res.data.user._id);
+        this.authService.user.next(user);
+      },
+      (error) => {
+        this.authService.user.next(null);
+      });
+  }
 }
