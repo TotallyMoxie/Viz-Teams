@@ -3,11 +3,14 @@ import { RouterOutlet } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogOverviewExampleDialog } from '../team-dialog/team-dialog.component';
+
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-team-list',
@@ -19,12 +22,42 @@ import { DialogOverviewExampleDialog } from '../team-dialog/team-dialog.componen
     MatExpansionModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAccordion,
+    CommonModule,
+
   ],
   templateUrl: './team-list.component.html',
-  styleUrls: ['./team-list.component.css'] 
+  styleUrls: ['./team-list.component.css']
 })
 export class TeamListComponent {
+  teams: any[] = [
+    {
+      name: 'Team A',
+      members: [
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' },
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' },
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' },
+        { name: 'Alice', image: '' },
+        { name: 'Bob', image: '' },
+        { name: 'Charlie', image: '' }
+      ]
+    },
+    {
+      name: 'Team B',
+      members: [
+        { name: 'David', image: '' },
+        { name: 'Eve', image: '' },
+        { name: 'Frank', image: '' }
+      ]
+    },
+  ];
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
