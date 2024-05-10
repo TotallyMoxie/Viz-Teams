@@ -10,11 +10,18 @@
         {{team.name}}
       </mat-expansion-panel-header>
       <mat-panel-description>
+        <div class="memberContainer">
         <div *ngFor="let member of team.members">
           <img class="memberIcon" *ngIf="member.picture" src="{{ member.picture }}" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
           <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
-
         </div>
+        <mat-divider class="divider2"></mat-divider>
+        <div>
+          <mat-action-row class="action-row2">
+            <button></button>
+          </mat-action-row>
+        </div>
+      </div>
       </mat-panel-description>
     </mat-expansion-panel>
 
