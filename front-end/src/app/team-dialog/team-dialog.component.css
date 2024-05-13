@@ -1,20 +1,19 @@
-.TeamStuff{
-display: block;
-justify-content: center;
 
-}
+
+
 mat-dialog-content {
   padding: 0%;
   width: 100%;
-  background-color: white;
   border-radius: 0px;
 }
 
-
 mat-form-field {
   width: 100%;
-  background: transparent;
   border-color: white;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: white !important;
 }
 
 .submit{
@@ -24,3 +23,12 @@ mat-form-field {
   margin: 0;
   padding: 0;
 }
+
+.cancel{
+  position: absolute;
+  bottom: 6px;
+  right: 70px;
+  margin: 0;
+  padding: 0;
+}
+
