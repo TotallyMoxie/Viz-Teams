@@ -11,11 +11,9 @@
       <mat-label>Team Description</mat-label>
       <textarea class="TeamDescriptions" matInput [(ngModel)]="description" placeholder="Team Description"></textarea>
     </mat-form-field>
-  </mat-dialog-content>
-
-  <mat-dialog-actions>
     <button mat-button mat-dialog-close class="cancel">Cancel</button>
     <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
     <button mat-button [mat-dialog-close]="true" class="submit">Submit</button>
-  </mat-dialog-actions>
+  </mat-dialog-content>
+
 </div>

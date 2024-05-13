@@ -32,3 +32,10 @@ mat-form-field {
   padding: 0;
 }
 
+::ng-deep .mdc-dialog__container {
+  width: 100%;
+  height: 65%;
+  padding: 2%;
+}
+
+
