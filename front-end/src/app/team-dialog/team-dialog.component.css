@@ -1,3 +1,21 @@
+.TeamStuff{
+display: block;
+justify-content: center;
+
+}
+mat-dialog-content {
+  padding: 0%;
+  width: 100%;
+  background-color: white;
+  border-radius: 0px;
+}
+
+
+mat-form-field {
+  width: 100%;
+  background: transparent;
+  border-color: white;
+}
 
 .submit{
   position: absolute;
