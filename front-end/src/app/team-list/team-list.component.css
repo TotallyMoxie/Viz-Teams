@@ -4,24 +4,27 @@
   height: 85vh;
   width: 50vw;
   margin: 5%;
-  padding: 0;
+  padding: 0 !important;
+  --mat-expansion-container-background-color: lightgray;
 }
 
 .divider {
   width: 100%;
   margin-top: 1.5rem;
-
 }
- .mat-card-content{
+
+ .mat-mdc-card-content{
   padding: 0;
   width: 100%;
 }
 
 .mat-expansion-panel {
-display: contents;
-border-bottom: 1px solid;
-width: 100%;
+  display: contents;
+  border-bottom: 1px solid;
+  width: 100%;
 }
+
+
 
 .memberContainer {
   display: flex;
@@ -56,4 +59,8 @@ width: 100%;
   padding: 5;
   height: auto;
   width: 50px;
+}
+
+:host ::ng-deep .mat-expansion-panel-body {
+  padding: 0 !important;
 }
