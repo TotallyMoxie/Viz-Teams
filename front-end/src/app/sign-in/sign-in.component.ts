@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../auth/User.model';
+import { Subscription } from 'rxjs';
 
 export interface DialogData {
   animal: string;
@@ -71,6 +72,8 @@ export class SignInComponentDialog implements OnInit {
   public name: string;
   public animal: string;
   public signInForm: FormGroup;
+  private currentUserSub: Subscription;
+  public user: User;
 
   constructor(
     public authService: AuthService,
@@ -80,10 +83,17 @@ export class SignInComponentDialog implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.currentUserSub = this.authService.currentUser.subscribe((user) => {
+      this.user = user;})
+
     this.signInForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl(''),
     });
+  }
+
+  ngOnDestroy() {
+    this.currentUserSub.unsubscribe();
   }
 
   onNoClick(): void {
@@ -102,8 +112,7 @@ export class SignInComponentDialog implements OnInit {
     this.authService
       .signin(signInForm.email, signInForm.password)
       .subscribe((res) => {
-        const { email, _id: id } = res.data.user;
-        const user = new User(email, id);
+        const user = new User(res.data.email, res.data.id);
         this.authService.user.next(user);
         this.dialogRef.close();
       });

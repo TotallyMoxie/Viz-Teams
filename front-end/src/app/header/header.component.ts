@@ -10,6 +10,7 @@ import { SignUpComponentDialog } from '../sign-up/sign-up.component';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../auth/User.model';
 import { SignInComponentDialog } from '../sign-in/sign-in.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-Header',
@@ -19,13 +20,18 @@ import { SignInComponentDialog } from '../sign-in/sign-in.component';
   styleUrl: './header.component.css',
 })
 export class Header implements OnInit {
+  private currentUserSub: Subscription;
   public user: User;
   constructor(public dialog: MatDialog, private authService: AuthService) {}
   ngOnInit() {
-    this.authService.currentUser.subscribe((user) => {
+    this.currentUserSub = this.authService.currentUser.subscribe((user) => {
       this.user = user;
       console.log(this.user);
     });
+  }
+
+  ngOnDestroy() {
+    this.currentUserSub.unsubscribe();
   }
   openSignUp(): void {
     const dialogRef = this.dialog.open(SignUpComponentDialog);
