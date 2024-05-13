@@ -72,7 +72,7 @@ const registerUser = async (req, res) => {
 	await Token.create(userToken); // Create the token
 
 	attachCookies({ res, user: tokenUser, refreshToken }); // Attach the cookies
-	res.status(200).json({ data: { user: tokenUser } }); // Send a 200 response with the user
+	res.status(200).json({ data: { email: user.email, id: user._id } }); // Send a 200 response with the user
 };
 
 // CONTROLLER: Login User
@@ -116,7 +116,7 @@ const loginUser = async (req, res) => {
 
 		attachCookies({ res, user: tokenUser, refreshToken }); // Attach the cookies
 
-		return res.status(200).json({ data: { user: tokenUser } }); // Send a 200 response with the user
+		return res.status(200).json({ data: { email: user.email, id: user._id } }); // Send a 200 response with the user
 	}
 
 	// If the token doesn't exist, create a new refresh token
@@ -128,7 +128,7 @@ const loginUser = async (req, res) => {
 	await Token.create(userToken); // Create the token
 
 	attachCookies({ res, user: tokenUser, refreshToken }); // Attach the cookies
-	res.status(200).json({ data: { user: tokenUser } }); // Send a 200 response with the user
+	res.status(200).json({ data: { email: user.email, id: user._id } }); // Send a 200 response with the user
 };
 
 // CONTROLLER: Logout User
