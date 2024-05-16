@@ -15,9 +15,10 @@
           <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
         </div>
         <mat-divider class="divider2"></mat-divider>
-        <div>
-          <mat-action-row class="action-row2">
-            <button></button>
+        <div class="action-row2">
+          <mat-action-row>
+            <button>
+              <mat-icon class="addMember">add_box</mat-icon></button>
           </mat-action-row>
         </div>
       </div>
