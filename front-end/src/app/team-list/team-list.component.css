@@ -5,7 +5,7 @@
   width: 48vw;
   margin: 5%;
   padding: 0 !important;
-  --mat-expansion-container-background-color: lightgray;
+  /* --mat-expansion-container-background-color: lightgray; */
 }
 
 .divider {
@@ -32,6 +32,7 @@
   padding: 0;
   background-color: lightgray;
   width: 100%;
+  justify-content: space-evenly;
 }
 
 .divider2 {
@@ -52,11 +53,12 @@
   border-top: 1px solid;
   padding: 0;
   width: 100%;
+  background-color: white;
 }
 
 
 .memberIcon {
-  padding: 5;
+  padding: 5px;
   height: auto;
   width: 50px;
 }
