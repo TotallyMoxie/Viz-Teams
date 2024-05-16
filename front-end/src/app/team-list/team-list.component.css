@@ -50,10 +50,12 @@
 }
 
 .action-row2 {
-  border-top: 1px solid;
+  display: flex;
+  width: 100%;
+  flex-direction: flex-end;
   padding: 0;
   width: 100%;
-  background-color: white;
+  background-color: lightgray;
 }
 
 
@@ -65,4 +67,9 @@
 
 :host ::ng-deep .mat-expansion-panel-body {
   padding: 0 !important;
+}
+
+.add_person_button {
+  transform: scale(1.25);
+  margin: .5rem;
 }
