@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogOverviewExampleDialog } from '../team-dialog/team-dialog.component';
+import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog.component';
 
 import { CommonModule } from '@angular/common';
 
@@ -69,5 +70,9 @@ export class TeamListComponent {
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
+  }
+
+  onAddPerson() {
+    this.dialog.open(AddPersonDialogComponent)
   }
 }

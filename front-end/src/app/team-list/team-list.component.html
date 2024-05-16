@@ -15,9 +15,9 @@
           <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
         </div>
         <mat-divider class="divider2"></mat-divider>
-          <mat-action-row class="action-row2">
+          <mat-action-row class="action-row2" (click)="onAddPerson()">
             <button  mat-icon-button class="add_person_button">
-              <mat-icon  style="color: rgb(115, 115, 115); " >person_add</mat-icon>
+              <mat-icon  style="color: rgb(115, 115, 115)" >person_add</mat-icon>
             </button>
           </mat-action-row>
       </div>
