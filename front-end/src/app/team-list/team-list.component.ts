@@ -58,7 +58,10 @@ export class TeamListComponent {
         { name: 'Frank', image: '' }
       ]
     },
+    {name: 'Team C',
+    members: []}
   ];
+message: any;
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {

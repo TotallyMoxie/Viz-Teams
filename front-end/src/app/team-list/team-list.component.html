@@ -6,22 +6,36 @@
 
   <mat-card-content>
     <mat-expansion-panel *ngFor="let team of teams">
-      <mat-expansion-panel-header  class="expansionList">
+      <mat-expansion-panel-header class="expansionList">
         {{team.name}}
       </mat-expansion-panel-header>
-        <div class="memberContainer">
-        <div *ngFor="let member of team.members">
-          <img class="memberIcon" *ngIf="member.picture" src="{{ member.picture }}" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
-          <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" alt="{{ member.name }}" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
+      <div class="memberContainer">
+        <div *ngIf="team.members && team.members.length > 0; else noMembersTemplate">
+          <div class="members">
+          <div *ngFor="let member of team.members">
+            <img class="memberIcon" *ngIf="member.picture" [src]="member.picture" [alt]="member.name" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
+            <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" [alt]="member.name" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
+          </div>
         </div>
+        </div>
+        <ng-template #noMembersTemplate>
+          <div class="no-members">
+            <div class="errormembers">
+            <h1>
+              No Members on Display
+            </h1>
+            </div>
+          </div>
+        </ng-template>
         <mat-divider class="divider2"></mat-divider>
           <mat-action-row class="action-row2" (click)="onAddPerson(team)">
-            <button  mat-icon-button class="add_person_button">
-              <mat-icon  style="color: rgb(115, 115, 115)" >person_add</mat-icon>
+            <button  mat-icon-button class="add_person_button memberButton">
+              <mat-icon   class="addMember" style="color: rgb(115, 115, 115)" >person_add</mat-icon>
             </button>
           </mat-action-row>
       </div>
     </mat-expansion-panel>
+
 
 
   </mat-card-content>
