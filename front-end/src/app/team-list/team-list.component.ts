@@ -57,7 +57,10 @@ export class TeamListComponent {
         { name: 'Frank', image: '' }
       ]
     },
+    {name: 'Team C',
+    members: []}
   ];
+message: any;
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
@@ -69,5 +72,9 @@ export class TeamListComponent {
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
+  }
+  noMembers(){
+    this.message = "No members in this team";
+    console.log(this.message);
   }
 }
