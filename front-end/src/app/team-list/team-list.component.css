@@ -48,12 +48,10 @@
 }
 
 .action-row2 {
-  display: flex;
-  width: 100%;
-  flex-direction: flex-end;
+  border-top: 1px solid;
   padding: 0;
   width: 100%;
-  background-color: lightgray;
+  background-color: white;
 }
 button {
   margin: 0;
@@ -96,11 +94,6 @@ button {
   align-items: center;
   width: 100%;
   font-size: xx-large;
-  color: rgb(91, 95, 107);
+  color: rgb(128, 128, 128);
 padding: 16px;
-}
-
-.add_person_button {
-  transform: scale(1.25);
-  margin: .5rem;
 }
