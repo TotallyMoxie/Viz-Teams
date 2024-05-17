@@ -1,3 +1,41 @@
-<div>
-    <p>Add Member Dialog</p>
+<div class="addPersonDialog">
+<form [formGroup]="this.addPersonForm" (submit)="onSubmit()">
+    <div class="control-row">
+<mat-form-field>
+    <input matInput type="text" placeholder="First Name" formControlName="firstName">
+    <mat-error>*First name required</mat-error>
+   </mat-form-field>
+
+   <mat-form-field>
+    <input matInput type="text" placeholder="Last Name" formControlName="lastName">
+    <mat-error>*Last name required</mat-error>
+   </mat-form-field><br>
+    </div>
+    <div class="control-row">
+<mat-form-field>
+    <mat-label>Title</mat-label>
+    <mat-select formControlName="title" [placeholder]="this.data?.teamName">
+        @for(title of this.titlesList; track $index){
+            <mat-option [value]="titlesList[$index]">{{title}}</mat-option>
+        }
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Team</mat-label>
+        <mat-select formControlName="team">
+            @for(team of this.teamsList; track $index){
+                <mat-option [value]="teamsList[$index]">{{team}}</mat-option>
+            }
+        </mat-select>
+        </mat-form-field><br>
+    </div>
+    <div class="buttonRow">
+ <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+<button mat-raised-button type="submit">Submit</button>
+    </div>
+
+
+</form>
+
 </div>

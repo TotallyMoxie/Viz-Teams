@@ -1,0 +1,23 @@
+.buttonRow {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+mat-form-field {
+    width: 400px;
+}
+
+.addPersonDialog {
+    width: max-content;
+    padding: 3rem;
+}
+
+.addPersonDialog button, mat-form-field {
+    margin: .5rem;
+}
+
+.control-row {
+    width: 100%;
+}
+

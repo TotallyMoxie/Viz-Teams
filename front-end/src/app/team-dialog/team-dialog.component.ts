@@ -41,7 +41,6 @@ bootstrap: [AppComponent]
 export interface DialogData {
   teamName: string;
   description: Text;
-
 }
 
 /**
