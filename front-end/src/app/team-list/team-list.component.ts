@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogOverviewExampleDialog } from '../team-dialog/team-dialog.component';
+import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog.component';
 
 import { CommonModule } from '@angular/common';
 
@@ -73,8 +74,8 @@ message: any;
       console.log('The dialog was closed');
     });
   }
-  noMembers(){
-    this.message = "No members in this team";
-    console.log(this.message);
+
+  onAddPerson() {
+    this.dialog.open(AddPersonDialogComponent)
   }
 }
