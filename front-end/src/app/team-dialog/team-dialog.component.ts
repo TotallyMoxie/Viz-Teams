@@ -14,6 +14,29 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Text } from '@angular/compiler';
+import { TeamService } from './team-service.service';
+import { NgModule } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { BrowserModule } from '@angular/platform-browser';
+
+NgModule ({
+  declarations: [
+AppComponent,
+
+  ],
+imports: [
+  BrowserModule,
+  FormsModule,
+  MatDialogModule,
+  MatButtonModule,
+  MatInputModule,
+  MatFormFieldModule,
+  NgModule,
+],
+providers: [TeamService],
+bootstrap: [AppComponent]
+})
+
 
 export interface DialogData {
   teamName: string;
@@ -28,14 +51,16 @@ export interface DialogData {
   selector: 'app-team-list',
   templateUrl: 'team-dialog.component.html',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatDialogModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatDialogModule, NgModule],
   styleUrl: './team-dialog.component.css'
 })
 export class DialogOverviewExample {
   teamName: string | undefined;
   description: Text | undefined;
+  onSubmit: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private teamService:TeamService) {}
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
@@ -44,11 +69,12 @@ export class DialogOverviewExample {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.description = result;
-      this.teamName = result;
-    });
+
+      }
+    );
   }
-}
+  }
+
 
 @Component({
   selector: 'app-team-list',
@@ -66,9 +92,16 @@ export class DialogOverviewExample {
   ],
   styleUrl: './team-dialog.component.css'
 })
+
+
 export class DialogOverviewExampleDialog {
-description: Text | undefined;
-teamName: string | undefined;
+  description: Text | undefined;
+  teamName: string | undefined;
+
+
+onSubmit() {
+throw new Error('Method not implemented.');
+}
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,

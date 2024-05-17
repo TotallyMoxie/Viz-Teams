@@ -1,19 +1,20 @@
 <div class="TeamStuff">
 
 
-  <mat-dialog-content>
-    <mat-form-field>
-      <mat-label>Team Name</mat-label>
-      <input class="teamNames" matInput [(ngModel)]="teamName">
-    </mat-form-field>
+  <form (ngSubmit)="onSubmit()" #teamForm="ngForm">
+    <mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Team Name</mat-label>
+        <input class="teamNames" matInput [(ngModel)]="teamName" name="teamName" required>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Team Description</mat-label>
-      <textarea class="TeamDescriptions" matInput [(ngModel)]="description" placeholder="Team Description"></textarea>
-    </mat-form-field>
-    <button mat-button mat-dialog-close class="cancel">Cancel</button>
-    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-    <button mat-button [mat-dialog-close]="true" class="submit">Submit</button>
-  </mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Team Description</mat-label>
+        <textarea class="TeamDescriptions" matInput [(ngModel)]="description" name="description" required placeholder="Team Description"></textarea>
+      </mat-form-field>
 
+      <button mat-button mat-dialog-close class="cancel">Cancel</button>
+      <button mat-button type="submit" class="submit">Submit</button>
+    </mat-dialog-content>
+  </form>
 </div>
