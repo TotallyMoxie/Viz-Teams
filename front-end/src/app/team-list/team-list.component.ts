@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { DialogOverviewExampleDialog } from '../team-dialog/team-dialog.component';
+import { DialogData, DialogOverviewExampleDialog } from '../team-dialog/team-dialog.component';
 import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog.component';
 
 import { CommonModule } from '@angular/common';
@@ -72,7 +72,9 @@ export class TeamListComponent {
     });
   }
 
-  onAddPerson() {
-    this.dialog.open(AddPersonDialogComponent)
+  onAddPerson(team) {
+    this.dialog.open(AddPersonDialogComponent, {
+      data: {teamName: team},
+    })
   }
 }

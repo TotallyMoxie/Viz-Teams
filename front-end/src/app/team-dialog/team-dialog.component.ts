@@ -18,7 +18,6 @@ import { Text } from '@angular/compiler';
 export interface DialogData {
   teamName: string;
   description: Text;
-
 }
 
 /**
