@@ -15,6 +15,28 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Text } from '@angular/compiler';
 import { TeamService } from '../shared/services/team-service.service';
+import { NgModule } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { BrowserModule } from '@angular/platform-browser';
+
+NgModule ({
+  declarations: [
+AppComponent,
+
+  ],
+imports: [
+  BrowserModule,
+  FormsModule,
+  MatDialogModule,
+  MatButtonModule,
+  MatInputModule,
+  MatFormFieldModule,
+  NgModule,
+],
+providers: [TeamService],
+bootstrap: [AppComponent]
+})
+
 
 export interface DialogData {
   teamName: string;
@@ -28,7 +50,7 @@ export interface DialogData {
   selector: 'app-team-list',
   templateUrl: 'team-dialog.component.html',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatDialogModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatDialogModule,],
   styleUrl: './team-dialog.component.css'
 })
 export class DialogOverviewExample {

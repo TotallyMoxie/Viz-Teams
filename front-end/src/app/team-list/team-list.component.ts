@@ -78,3 +78,7 @@ message: any;
     })
   }
 }
+
+export class TeamDialogComponent {
+  
+}
