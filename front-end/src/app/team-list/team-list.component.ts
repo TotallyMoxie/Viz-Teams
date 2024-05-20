@@ -62,16 +62,13 @@ export class TeamListComponent {
     members: []}
   ];
 message: any;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+    ) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    this.dialog.open(DialogOverviewExampleDialog, {
       height: '400px',
       width: '600px',
-    });
-
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
     });
   }
 
