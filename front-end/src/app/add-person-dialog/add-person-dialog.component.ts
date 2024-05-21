@@ -35,7 +35,7 @@ import { TeamService } from '../shared/services/team-service.service';
 export class AddPersonDialogComponent implements OnInit {
   addPersonForm: FormGroup = new FormGroup({});
   titles = new FormControl();
-  titlesList: string[] = ['guy', 'pal', 'buddy', 'friend'];
+  titlesList: string[] = ['Software Enginerr', 'Quality Engineer'];
   teamsList: string[] = [];
 
   constructor(
