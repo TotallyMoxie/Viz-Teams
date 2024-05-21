@@ -35,7 +35,12 @@ NgModule({
 });
 
 export interface DialogData {
+<<<<<<< Updated upstream
   teamName: string;
+=======
+  description: any | undefined;
+  teamName: string | undefined;
+>>>>>>> Stashed changes
 }
 
 /**
@@ -55,8 +60,8 @@ export interface DialogData {
   styleUrl: './team-dialog.component.css',
 })
 export class DialogOverviewExample {
+  description: any | undefined;
   teamName: string | undefined;
-  description: Text | undefined;
   onSubmit: any;
 
   constructor(public dialog: MatDialog, private teamService: TeamService) {}
@@ -70,8 +75,12 @@ export class DialogOverviewExample {
       console.log('The dialog was closed');
     });
   }
+<<<<<<< Updated upstream
 }
 
+=======
+  }
+>>>>>>> Stashed changes
 @Component({
   selector: 'app-team-list',
   templateUrl: 'team-dialog.component.html',
@@ -89,9 +98,12 @@ export class DialogOverviewExample {
   styleUrl: './team-dialog.component.css',
 })
 export class DialogOverviewExampleDialog {
-  description: Text | undefined;
+  description: any | undefined;
   teamName: string | undefined;
+  http: any;
+  teams: any;
 
+<<<<<<< Updated upstream
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
@@ -102,6 +114,38 @@ export class DialogOverviewExampleDialog {
   }
 
   onNoClick(): void {
+=======
+ constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private teamService: TeamService
+  ) {}
+
+  onSubmit(): void {
+    const teamData = {
+      teamName: this.teamName,
+      description: this.description
+    };
+    console.log('Team data:', teamData);
+    this.dialogRef.close({ refreshTeams: true });
+
+    const teams = JSON.parse(localStorage.getItem('teams') || '[]');
+    teams.push(teamData);
+    localStorage.setItem('teams', JSON.stringify(teams));
+
+>>>>>>> Stashed changes
     this.dialogRef.close();
   }
+
+  loadTeamsFromLocalStorage() {
+    const storedTeams = localStorage.getItem('teams');
+    if (storedTeams) {
+      this.teams = JSON.parse(storedTeams);
+    } else {
+      this.teams = [];
+    }
+  }
+
+
+
 }
