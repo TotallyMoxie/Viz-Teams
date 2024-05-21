@@ -7,7 +7,7 @@ export class TeamService {
   newTeam: any;
   public teams: any[] = [
     {
-      name: 'Team A',
+      name: 'Software Engineer',
       members: [
         { name: 'Alice', image: '' },
         { name: 'Bob', image: '' },
@@ -24,7 +24,7 @@ export class TeamService {
       ],
     },
     {
-      name: 'Team B',
+      name: 'Quality Engineer',
       members: [
         { name: 'David', image: '' },
         { name: 'Eve', image: '' },
