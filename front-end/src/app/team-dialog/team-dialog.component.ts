@@ -99,7 +99,8 @@ export class DialogOverviewExampleDialog {
 
 
 onSubmit() {
-throw new Error('Method not implemented.');
+
+  throw new Error('Method not implemented.');
 }
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
