@@ -6,11 +6,7 @@
   <mat-card-content>
     <mat-expansion-panel *ngFor="let team of this.teamService.teams">
       <mat-expansion-panel-header class="expansionList">
-<<<<<<< Updated upstream
-        {{ team.name }}
-=======
         {{team.teamName}}
->>>>>>> Stashed changes
       </mat-expansion-panel-header>
       <div class="memberContainer">
         <div
@@ -67,17 +63,8 @@
 
   <div class="action-row">
     <mat-action-row>
-<<<<<<< Updated upstream
-      <button
-        (click)="openDialog()"
-        class="add-button"
-        mat-button
-        matTooltip="Add Team"
-      >
-=======
       <button (click)="clearLocalStorage()">Clear Local Storage</button>
       <button (click)="openDialog()" class="add-button" mat-button matTooltip="Add Team" >
->>>>>>> Stashed changes
         <mat-icon class="addBox">add_box</mat-icon>
       </button>
     </mat-action-row>
