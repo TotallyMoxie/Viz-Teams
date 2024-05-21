@@ -1,17 +1,24 @@
 import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { DialogData, DialogOverviewExampleDialog } from '../team-dialog/team-dialog.component';
+import {
+  DialogData,
+  DialogOverviewExampleDialog,
+} from '../team-dialog/team-dialog.component';
 import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog.component';
 
 import { CommonModule } from '@angular/common';
-
+import { TeamService } from '../shared/services/team-service.service';
 
 @Component({
   selector: 'app-team-list',
@@ -26,44 +33,13 @@ import { CommonModule } from '@angular/common';
     MatTooltipModule,
     MatAccordion,
     CommonModule,
-
   ],
   templateUrl: './team-list.component.html',
-  styleUrls: ['./team-list.component.css']
+  styleUrls: ['./team-list.component.css'],
 })
 export class TeamListComponent {
-  teams: any[] = [
-    {
-      name: 'Team A',
-      members: [
-        { name: 'Alice', image: '' },
-        { name: 'Bob', image: '' },
-        { name: 'Charlie', image: '' },
-        { name: 'Alice', image: '' },
-        { name: 'Bob', image: '' },
-        { name: 'Charlie', image: '' },
-        { name: 'Alice', image: '' },
-        { name: 'Bob', image: '' },
-        { name: 'Charlie', image: '' },
-        { name: 'Alice', image: '' },
-        { name: 'Bob', image: '' },
-        { name: 'Charlie', image: '' }
-      ]
-    },
-    {
-      name: 'Team B',
-      members: [
-        { name: 'David', image: '' },
-        { name: 'Eve', image: '' },
-        { name: 'Frank', image: '' }
-      ]
-    },
-    {name: 'Team C',
-    members: []}
-  ];
-message: any;
-  constructor(public dialog: MatDialog,
-    ) {}
+  message: any;
+  constructor(public dialog: MatDialog, public teamService: TeamService) {}
 
   openDialog(): void {
     this.dialog.open(DialogOverviewExampleDialog, {
@@ -74,11 +50,9 @@ message: any;
 
   onAddPerson(team) {
     this.dialog.open(AddPersonDialogComponent, {
-      data: {teamName: team},
-    })
+      data: { teamName: team.name },
+    });
   }
 }
 
-export class TeamDialogComponent {
-  
-}
+export class TeamDialogComponent {}

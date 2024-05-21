@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -9,38 +9,33 @@ import {
   MatDialogClose,
   MatDialogModule,
 } from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { Text } from '@angular/compiler';
 import { TeamService } from '../shared/services/team-service.service';
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { BrowserModule } from '@angular/platform-browser';
 
-NgModule ({
-  declarations: [
-AppComponent,
-
+NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    NgModule,
   ],
-imports: [
-  BrowserModule,
-  FormsModule,
-  MatDialogModule,
-  MatButtonModule,
-  MatInputModule,
-  MatFormFieldModule,
-  NgModule,
-],
-providers: [TeamService],
-bootstrap: [AppComponent]
-})
-
+  providers: [TeamService],
+  bootstrap: [AppComponent],
+});
 
 export interface DialogData {
   teamName: string;
-  description: Text;
 }
 
 /**
@@ -50,30 +45,32 @@ export interface DialogData {
   selector: 'app-team-list',
   templateUrl: 'team-dialog.component.html',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatDialogModule,],
-  styleUrl: './team-dialog.component.css'
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogModule,
+  ],
+  styleUrl: './team-dialog.component.css',
 })
 export class DialogOverviewExample {
   teamName: string | undefined;
   description: Text | undefined;
   onSubmit: any;
 
-  constructor(public dialog: MatDialog, private teamService:TeamService) {}
-
+  constructor(public dialog: MatDialog, private teamService: TeamService) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: {name: this.teamName, description: this.description},
+      data: { name: this.teamName, description: this.description },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-
-      }
-    );
+    });
   }
-  }
-
+}
 
 @Component({
   selector: 'app-team-list',
@@ -89,21 +86,19 @@ export class DialogOverviewExample {
     MatDialogActions,
     MatDialogClose,
   ],
-  styleUrl: './team-dialog.component.css'
+  styleUrl: './team-dialog.component.css',
 })
-
-
 export class DialogOverviewExampleDialog {
   description: Text | undefined;
   teamName: string | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   onSubmit() {
-  throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
 
   onNoClick(): void {
