@@ -37,17 +37,10 @@ import { TeamService } from '../shared/services/team-service.service';
   templateUrl: './team-list.component.html',
   styleUrls: ['./team-list.component.css'],
 })
-<<<<<<< Updated upstream
 export class TeamListComponent {
   message: any;
+  teams: any;
   constructor(public dialog: MatDialog, public teamService: TeamService) {}
-=======
-export class TeamListComponent implements OnInit {
-  teams: any[] = [];
-  dialogRef: any;
-
-  constructor(public dialog: MatDialog) {}
->>>>>>> Stashed changes
 
   ngOnInit() {
     // Check if there are teams stored in local storage
@@ -86,14 +79,8 @@ export class TeamListComponent implements OnInit {
 
   onAddPerson(team) {
     this.dialog.open(AddPersonDialogComponent, {
-<<<<<<< Updated upstream
       data: { teamName: team.name },
     });
-=======
-      data: {teamName: team},
-    }
-  )
->>>>>>> Stashed changes
   }
   clearLocalStorage() {
     localStorage.clear();
@@ -103,10 +90,4 @@ export class TeamListComponent implements OnInit {
   }
 
 
-<<<<<<< Updated upstream
 export class TeamDialogComponent {}
-=======
-export class TeamDialogComponent {
-
-}
->>>>>>> Stashed changes
