@@ -1,50 +1,83 @@
-<mat-card class = "team-list">
-
+<mat-card class="team-list">
   <mat-card-header class="header">Teams</mat-card-header>
 
   <mat-divider class="divider"></mat-divider>
 
   <mat-card-content>
-    <mat-expansion-panel *ngFor="let team of teams">
+    <mat-expansion-panel *ngFor="let team of this.teamService.teams">
       <mat-expansion-panel-header class="expansionList">
-        {{team.name}}
+<<<<<<< Updated upstream
+        {{ team.name }}
+=======
+        {{team.teamName}}
+>>>>>>> Stashed changes
       </mat-expansion-panel-header>
       <div class="memberContainer">
-        <div *ngIf="team.members && team.members.length > 0; else noMembersTemplate">
+        <div
+          *ngIf="
+            team.members && team.members.length > 0;
+            else noMembersTemplate
+          "
+        >
           <div class="members">
-          <div *ngFor="let member of team.members">
-            <img class="memberIcon" *ngIf="member.picture" [src]="member.picture" [alt]="member.name" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
-            <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" [alt]="member.name" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
+            <div *ngFor="let member of team.members">
+              <img
+                class="memberIcon"
+                *ngIf="member.picture"
+                [src]="member.picture"
+                [alt]="member.name"
+                width="50"
+                height="50"
+                matTooltip="{{ member.name }}"
+                matTooltipPosition="above"
+              />
+              <img
+                class="memberIcon"
+                *ngIf="!member.picture"
+                src="../../assets/avatar.png"
+                [alt]="member.name"
+                width="50"
+                height="50"
+                matTooltip="{{ member.name }}"
+                matTooltipPosition="above"
+              />
+            </div>
           </div>
-        </div>
         </div>
         <ng-template #noMembersTemplate>
           <div class="no-members">
             <div class="errormembers">
-            <h1>
-              No Members on Display
-            </h1>
+              <h1>No Members on Display</h1>
             </div>
           </div>
         </ng-template>
         <mat-divider class="divider2"></mat-divider>
-          <mat-action-row class="action-row2" (click)="onAddPerson(team)">
-            <button  mat-icon-button class="add_person_button memberButton">
-              <mat-icon   class="addMember" style="color: rgb(115, 115, 115)" >person_add</mat-icon>
-            </button>
-          </mat-action-row>
+        <mat-action-row class="action-row2" (click)="onAddPerson(team)">
+          <button mat-icon-button class="add_person_button memberButton">
+            <mat-icon class="addMember" style="color: rgb(115, 115, 115)"
+              >person_add</mat-icon
+            >
+          </button>
+        </mat-action-row>
       </div>
     </mat-expansion-panel>
-
-
-
   </mat-card-content>
 
   <mat-divider class="divider2"></mat-divider>
 
   <div class="action-row">
     <mat-action-row>
+<<<<<<< Updated upstream
+      <button
+        (click)="openDialog()"
+        class="add-button"
+        mat-button
+        matTooltip="Add Team"
+      >
+=======
+      <button (click)="clearLocalStorage()">Clear Local Storage</button>
       <button (click)="openDialog()" class="add-button" mat-button matTooltip="Add Team" >
+>>>>>>> Stashed changes
         <mat-icon class="addBox">add_box</mat-icon>
       </button>
     </mat-action-row>
