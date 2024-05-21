@@ -35,12 +35,8 @@ NgModule({
 });
 
 export interface DialogData {
-<<<<<<< Updated upstream
-  teamName: string;
-=======
   description: any | undefined;
   teamName: string | undefined;
->>>>>>> Stashed changes
 }
 
 /**
@@ -75,12 +71,7 @@ export class DialogOverviewExample {
       console.log('The dialog was closed');
     });
   }
-<<<<<<< Updated upstream
-}
-
-=======
   }
->>>>>>> Stashed changes
 @Component({
   selector: 'app-team-list',
   templateUrl: 'team-dialog.component.html',
@@ -103,18 +94,6 @@ export class DialogOverviewExampleDialog {
   http: any;
   teams: any;
 
-<<<<<<< Updated upstream
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
-
-  onSubmit() {
-    throw new Error('Method not implemented.');
-  }
-
-  onNoClick(): void {
-=======
  constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -133,7 +112,6 @@ export class DialogOverviewExampleDialog {
     teams.push(teamData);
     localStorage.setItem('teams', JSON.stringify(teams));
 
->>>>>>> Stashed changes
     this.dialogRef.close();
   }
 
