@@ -1,5 +1,6 @@
 // * CONFIG
 require("dotenv").config();
+require("express-async-errors");
 
 // * IMPORTS
 const express = require("express");
@@ -60,6 +61,7 @@ app.use(sanitize);
 
 // * ROUTES
 app.use("/api/v1/auth", require("./routes/auth.routes"));
+app.use("/api/v1/team", require("./routes/team.routes"));
 // app.get("*", (req, res) => {
 // 	res.sendFile(`index.html`, { root: www });
 // });
