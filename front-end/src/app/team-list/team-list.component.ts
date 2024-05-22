@@ -5,17 +5,21 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
 import {
   DialogData,
   DialogOverviewExampleDialog,
 } from '../team-dialog/team-dialog.component';
+
 import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog.component';
+import { MoveTeamService } from './move-teams.service';
 
 import { CommonModule } from '@angular/common';
 import { TeamService } from '../shared/services/team-service.service';
@@ -86,8 +90,13 @@ export class TeamListComponent {
     localStorage.clear();
     this.teams = []; // Clear the teams array in the component
   }
+  selectTeam(team) {
+    this.MoveTeamService.selectTeams(team);
+    console.log(this.MoveTeamService.selectedTeam);
+    }
+}
 
-  }
 
 
 export class TeamDialogComponent {}
+

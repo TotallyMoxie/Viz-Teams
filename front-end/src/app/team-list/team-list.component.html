@@ -4,9 +4,11 @@
   <mat-divider class="divider"></mat-divider>
 
   <mat-card-content>
+
     <mat-expansion-panel *ngFor="let team of this.teamService.teams">
       <mat-expansion-panel-header class="expansionList">
         {{team.teamName}}
+
       </mat-expansion-panel-header>
       <div class="memberContainer">
         <div

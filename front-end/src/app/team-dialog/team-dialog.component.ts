@@ -54,6 +54,7 @@ export interface DialogData {
     MatDialogModule,
   ],
   styleUrl: './team-dialog.component.css',
+
 })
 export class DialogOverviewExample {
   description: any | undefined;

@@ -1,5 +1,29 @@
-<mat-card class="info-card">
-  <mat-card-header></mat-card-header>
-  <mat-card-content></mat-card-content>
+<mat-card *ngIf="this.MoveTeamService.selectedTeam !== 'No Team Selected'" class="info-card">
   <mat-card-content>Select a team to view members.</mat-card-content>
 </mat-card>
+
+<div *ngFor="let team of teams">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ team.name }}</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+<div *ngIf="this.MoveTeamService.selectedTeam">
+  <mat-card class="info-card">
+    <mat-card-header>
+      <mat-card-title class="team-name">{{ this.MoveTeamService.selectedTeam.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="team-members-table">
+        <div class="team-member" *ngFor="let member of this.MoveTeamService.selectedTeam.members">
+          <div class="team-member-image">
+            <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" [alt]="member.name" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
+          </div>
+          <div class="team-member-name">{{ member.name }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

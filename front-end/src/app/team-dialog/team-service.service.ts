@@ -1,11 +1,13 @@
 // team.service.ts
 
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TeamService {
   teams: { teamName: string, description: string }[] = [];
 
@@ -19,3 +21,4 @@ export class TeamService {
     return this.teams;
   }
 }
+
