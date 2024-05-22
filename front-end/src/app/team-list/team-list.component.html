@@ -6,8 +6,9 @@
 
   <mat-card-content>
     <mat-expansion-panel *ngFor="let team of teams">
-      <mat-expansion-panel-header class="expansionList">
-        {{team.name}}
+
+      <mat-expansion-panel-header class="expansionList" >
+        <div (click)="selectTeam(team)"> {{team.name}}</div>
       </mat-expansion-panel-header>
       <div class="memberContainer">
         <div *ngIf="team.members && team.members.length > 0; else noMembersTemplate">

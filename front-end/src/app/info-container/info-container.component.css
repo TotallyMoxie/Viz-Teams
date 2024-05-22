@@ -1,12 +1,51 @@
  .info-card {
     font-size: 40px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    grid-template-columns: auto 1fr; /* Two columns: one for the image, one for the name */
     height: 80vh;
     width: 44vw;
     position: absolute; /* Add position absolute */
     right: 2%;
     top: 16%;
   }
+
+
+.team-members-table {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Two columns: one for the image, one for the name */
+  gap: 10px 100px; /* Adjust the gaps between cells */
+  height: 70vh;
+  width: 44vw;
+  margin-left: 20px;
+
+}
+
+/* Style for each member's row */
+.team-member {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: auto;
+
+}
+
+/* Style for the image cell */
+.team-member-image {
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+}
+
+/* Style for the name cell */
+.team-member-name {
+  padding: 10px;
+    font-size: small;
+    margin-top: auto;
+}
+
+.team-name {
+  font-size: 1em;
+  font-weight: bold;
+  align-items: flex-start;
+}
+
 

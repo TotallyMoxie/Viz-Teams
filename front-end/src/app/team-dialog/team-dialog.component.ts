@@ -50,7 +50,7 @@ export interface DialogData {
   selector: 'app-team-list',
   templateUrl: 'team-dialog.component.html',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatDialogModule, NgModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatDialogModule, ],
   styleUrl: './team-dialog.component.css'
 })
 export class DialogOverviewExample {
