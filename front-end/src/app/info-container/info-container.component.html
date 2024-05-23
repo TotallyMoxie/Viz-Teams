@@ -16,8 +16,8 @@
       <mat-card-title class="team-name">{{ this.MoveTeamService.selectedTeam.name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div class="team-members-table">
-        <div class="team-member" *ngFor="let member of this.MoveTeamService.selectedTeam.members">
+      <div class="team-members-table" >
+        <div class="team-member" *ngFor="let member of this.MoveTeamService.selectedTeam.members" (click)="memberInfo(member)">
           <div class="team-member-image">
             <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" [alt]="member.name" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
           </div>
@@ -27,3 +27,18 @@
     </mat-card-content>
   </mat-card>
 </div>
+
+
+
+
+<div *ngIf="selectedMember">
+  <mat-card class="info-card">
+    <mat-card-header (click)="returnToTeam(selectedMember)">
+      <mat-card-title >{{MoveTeamService.selectedTeam.name}} > {{ selectedMember.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Add any additional member information here -->
+    </mat-card-content>
+  </mat-card>
+</div>
+
