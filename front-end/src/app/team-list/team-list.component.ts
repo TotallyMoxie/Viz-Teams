@@ -59,18 +59,18 @@ export class TeamListComponent {
           members: [
             { name: 'Alice', image: '' },
             { name: 'Bob', image: '' },
-            { name: 'Charlie', image: '' }
-          ]
+            { name: 'Charlie', image: '' },
+          ],
         },
         {
           name: 'Team B',
           members: [
             { name: 'David', image: '' },
             { name: 'Eve', image: '' },
-            { name: 'Frank', image: '' }
-          ]
+            { name: 'Frank', image: '' },
+          ],
         },
-        {name: 'Team C', members: []}
+        { name: 'Team C', members: [] },
       ];
     }
   }
@@ -90,13 +90,10 @@ export class TeamListComponent {
     localStorage.clear();
     this.teams = []; // Clear the teams array in the component
   }
-  selectTeam(team) {
-    this.MoveTeamService.selectTeams(team);
-    console.log(this.MoveTeamService.selectedTeam);
-    }
+  // selectTeam(team) {
+  //   this.MoveTeamService.selectTeams(team);
+  //   console.log(this.MoveTeamService.selectedTeam);
+  //   }
 }
 
-
-
 export class TeamDialogComponent {}
-

@@ -29,7 +29,7 @@ const getTeamById = async (req, res) => {
 };
 
 const getTeamByName = async (req, res) => {
-	const { name } = req.params;
+	const name = req.query.name;
 	const team = await Team.findOne({ name });
 	if (!team) {
 		return res.status(404).json({ message: "No team found" });
