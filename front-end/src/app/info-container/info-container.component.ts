@@ -17,8 +17,13 @@ import { MatTooltip } from '@angular/material/tooltip';
 })
 export class InfoContainerComponent  {
   teams: any[] = [];
+  selectedMember = null;
+  team = this.teams;
+
   constructor(public dialog: MatDialog, public MoveTeamService: MoveTeamService) {
   }
+
+
 
   openDialog(): void {
     let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
@@ -31,4 +36,18 @@ export class InfoContainerComponent  {
       // Handle result if needed
     });
   }
+
+  selectTeam(team) {
+    this.MoveTeamService.selectedTeam(team);
+
+  }
+
+  memberInfo(member) {
+    this.selectedMember = member;
+
+  }
+  returnToTeam(team){
+    this.selectedMember = null;
+  }
 }
+
