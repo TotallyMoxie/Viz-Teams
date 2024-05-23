@@ -1,13 +1,20 @@
 const Team = require("../models/Team.model");
+const Member = require("../models/Member.model");
 
 const createTeam = async (req, res) => {
-	const { name, members } = req.body;
-	if (!name || !members) {
+	const { name, members: memberIds } = req.body;
+	if (!name || !memberIds) {
 		return res
 			.status(400)
 			.json({ message: "Please provide a name and members" });
 	}
-	const newTeam = await Team.create({ name, members });
+	memberIds.forEach(async (member) => {
+		const foundMember = await Member.findById(member);
+		if (!foundMember) {
+			return res.status(404).json({ message: "Member not found" });
+		}
+	});
+	const newTeam = await Team.create({ name, members: memberIds });
 	res.status(201).json({ newTeam });
 };
 
@@ -39,15 +46,21 @@ const getTeamByName = async (req, res) => {
 
 const updateTeam = async (req, res) => {
 	const { id } = req.params;
-	const { name, members } = req.body;
+	const { name, members: memberIds } = req.body;
 	const team = await Team.findByIdAndUpdate(
 		id,
-		{ name, members },
+		{ name, members: memberIds },
 		{ new: true, runValidators: true }
 	);
 	if (!team) {
 		return res.status(404).json({ message: "No team found" });
 	}
+	memberIds.forEach(async (member) => {
+		const foundMember = await Member.findById(member);
+		if (!foundMember) {
+			return res.status(404).json({ message: "Member not found" });
+		}
+	});
 	res.status(200).json({ team });
 };
 
