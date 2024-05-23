@@ -19,7 +19,7 @@ import {
 } from '../team-dialog/team-dialog.component';
 
 import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog.component';
-import { MoveTeamService } from './move-teams.service';
+import { MoveTeamService } from '../shared/services/move-teams.service';
 
 import { CommonModule } from '@angular/common';
 import { TeamService } from '../shared/services/team-service.service';
@@ -37,6 +37,7 @@ import { TeamService } from '../shared/services/team-service.service';
     MatTooltipModule,
     MatAccordion,
     CommonModule,
+
   ],
   templateUrl: './team-list.component.html',
   styleUrls: ['./team-list.component.css'],
@@ -44,7 +45,7 @@ import { TeamService } from '../shared/services/team-service.service';
 export class TeamListComponent {
   message: any;
   teams: any;
-  constructor(public dialog: MatDialog, public teamService: TeamService) {}
+  constructor(public dialog: MatDialog, public teamService: TeamService, public MoveTeamService: MoveTeamService) {}
 
   ngOnInit() {
     // Check if there are teams stored in local storage
