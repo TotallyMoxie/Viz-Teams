@@ -34,8 +34,8 @@
       <mat-form-field>
         <mat-label>Team</mat-label>
         <mat-select formControlName="team" [ngModel]="this.data.teamName">
-          @for(team of this.teamsList; track $index){
-          <mat-option [value]="teamsList[$index]">{{ team }}</mat-option>
+          @for(team of this.teams; track $index){
+          <mat-option [value]="teams[$index]">{{ team }}</mat-option>
           }
         </mat-select> </mat-form-field
       ><br />

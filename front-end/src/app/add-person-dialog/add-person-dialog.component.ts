@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { DialogData } from '../team-dialog/team-dialog.component';
 import { TeamService } from '../shared/services/team-service.service';
+import { Team } from '../shared/models/team.model';
 
 @Component({
   selector: 'app-add-person-dialog',
@@ -36,7 +37,7 @@ export class AddPersonDialogComponent implements OnInit {
   addPersonForm: FormGroup = new FormGroup({});
   titles = new FormControl();
   titlesList: string[] = ['Software Engineer', 'Quality Engineer'];
-  teamsList: string[] = [];
+  teams: Team[] = [];
 
   constructor(
     private dialogRef: MatDialogRef<AddPersonDialogComponent>,
@@ -45,7 +46,9 @@ export class AddPersonDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.teamsList = this.teamService.teams.map((team) => team.name);
+    this.teamService.teams.subscribe((teams) => {
+      this.teams = teams;
+    });
     this.addPersonForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),

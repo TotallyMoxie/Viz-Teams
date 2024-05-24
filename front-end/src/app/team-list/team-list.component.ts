@@ -24,6 +24,8 @@ import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog
 import { CommonModule } from '@angular/common';
 import { TeamService } from '../shared/services/team-service.service';
 import { MoveTeamService } from '../shared/services/move-teams.service';
+import { Subscription } from 'rxjs';
+import { Team } from '../shared/models/team.model';
 
 @Component({
   selector: 'app-team-list',
@@ -44,24 +46,52 @@ import { MoveTeamService } from '../shared/services/move-teams.service';
 })
 
 export class TeamListComponent {
+  teamSubscription: Subscription;
   message: any;
   teams: any;
-  constructor(public dialog: MatDialog, public teamService: TeamService, private MoveTeamService: MoveTeamService, private http: HttpClient) {}
+  constructor(
+    public dialog: MatDialog,
+    public teamService: TeamService,
+    public MoveTeamService: MoveTeamService
+  ) {}
 
   ngOnInit() {
-    this.getTeams();
-  }
+    this.teamSubscription = this.teamService.teams.subscribe((teams) => {
+      this.teams = teams;
+    });
 
-  getTeams(): void {
-    this.http.get<any>('https://viz-teams-1.onrender.com/')
-      .subscribe(
-        (response) => {
-          this.teams = response.teams;
-        },
-        (error) => {
-          console.error('Error fetching teams:', error);
-        }
-      );
+    this.teamService.getTeams().subscribe((res) => {
+      let { teams } = res;
+      this.teamService.teams.next(teams);
+      console.log(this.teams);
+    });
+
+    // Check if there are teams stored in local storage
+    const storedTeams = localStorage.getItem('teams');
+    if (storedTeams) {
+      this.teams = JSON.parse(storedTeams);
+    } else {
+      // If no teams are stored, initialize with default data
+      this.teams = [
+        // {
+        //   name: 'Team A',
+        //   members: [
+        //     { name: 'Alice', image: '' },
+        //     { name: 'Bob', image: '' },
+        //     { name: 'Charlie', image: '' },
+        //   ],
+        // },
+        // {
+        //   name: 'Team B',
+        //   members: [
+        //     { name: 'David', image: '' },
+        //     { name: 'Eve', image: '' },
+        //     { name: 'Frank', image: '' },
+        //   ],
+        // },
+        // { name: 'Team C', members: [] },
+      ];
+    }
   }
   openDialog(): void {
     this.dialog.open(DialogOverviewExampleDialog, {
@@ -78,10 +108,5 @@ export class TeamListComponent {
   selectTeam(team) {
     this.MoveTeamService.selectTeams(team);
     console.log(this.MoveTeamService.selectedTeam);
-    }
+  }
 }
-
-
-
-export class TeamDialogComponent {}
-
