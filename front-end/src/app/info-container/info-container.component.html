@@ -30,8 +30,11 @@
     <div class="action-row">
 
       <mat-action-row>
-        <button (click)="openDialog()" class="add-button" mat-button matTooltip="Add Team" >
-          <mat-icon class="addBox">add_box</mat-icon>
+        <button (click)="openDialog()" class="archive" mat-button matTooltip="archive" >
+          <mat-icon class="archiveBox">archive</mat-icon>
+        </button>
+        <button (click)="openDialog()" class="mode_edit" mat-button matTooltip="mode_edit" >
+          <mat-icon class="mode_editBox">mode_edit</mat-icon>
         </button>
       </mat-action-row>
     </div>
@@ -60,14 +63,18 @@
 
 
 
-<mat-divider class="divider2"></mat-divider>
+    <mat-divider class="divider2"></mat-divider>
 
-  <div class="action-row">
+    <div class="action-row">
 
-    <mat-action-row>
-      <button (click)="openDialog()" class="add-button" mat-button matTooltip="Add Team" >
-        <mat-icon class="addBox">add_box</mat-icon>
-      </button>
-    </mat-action-row>
-  </div>
-</mat-card>
+      <mat-action-row>
+        <button (click)="openDialog()" class="archive" mat-button matTooltip="archive" >
+          <mat-icon class="archiveBox">archive</mat-icon>
+        </button>
+        <button (click)="openDialog()" class="mode_edit" mat-button matTooltip="mode_edit" >
+          <mat-icon class="mode_editBox">mode_edit</mat-icon>
+        </button>
+      </mat-action-row>
+    </div>
+  </mat-card>
+</div>
