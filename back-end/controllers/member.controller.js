@@ -1,13 +1,19 @@
 const Member = require("../models/Member.model");
 
 const createMember = async (req, res) => {
-	const { name, title, picture, team } = req.body;
-	if (!name || !title || !picture || !team) {
-		return res
-			.status(400)
-			.json({ message: "Please provide a name, title, picture, and team" });
+	const { firstName, lastName, title, picture, team } = req.body;
+	if (!firstName || !lastName || !title || !picture || !team) {
+		return res.status(400).json({
+			message: "Please provide a firstName, title, picture, and team",
+		});
 	}
-	const newMember = await Member.create({ name, title, picture, team });
+	const newMember = await Member.create({
+		firstName,
+		lastName,
+		title,
+		picture,
+		team,
+	});
 	res.status(201).json({ newMember });
 };
 
@@ -39,10 +45,10 @@ const deleteMember = async (req, res) => {
 
 const updateMember = async (req, res) => {
 	const { id } = req.params;
-	const { name, title, picture, team } = req.body;
+	const { firstName, lastName, title, picture, team } = req.body;
 	const member = await Member.findByIdAndUpdate(
 		id,
-		{ name, title, picture, team },
+		{ firstName, lastName, title, picture, team },
 		{ new: true, runValidators: true }
 	);
 	if (!member) {

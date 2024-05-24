@@ -1,9 +1,10 @@
 export class Member {
+  public id: string;
+  public picture: string;
   constructor(
-    public id: string,
-    public name: string,
+    public firstName: string,
+    public lastName: string,
     public title: string,
-    public team: string,
-    public picture: string
+    public team: string
   ) {}
 }

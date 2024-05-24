@@ -1,10 +1,14 @@
 const { model, Schema, Types } = require("mongoose");
 
 const MemberSchema = new Schema({
-	name: {
+	firstName: {
 		type: String,
-		required: [true, "Name is required"],
-		unique: true,
+		required: [true, "First name is required"],
+		trim: true,
+	},
+	lastName: {
+		type: String,
+		required: [true, "Last name is required"],
 		trim: true,
 	},
 	title: {

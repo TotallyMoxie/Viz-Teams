@@ -18,6 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { DialogData } from '../team-dialog/team-dialog.component';
 import { TeamService } from '../shared/services/team-service.service';
 import { Team } from '../shared/models/team.model';
+import { Member } from '../shared/models/member.model';
+import { MemberServiceService } from '../shared/services/member-service.service';
 
 @Component({
   selector: 'app-add-person-dialog',
@@ -34,7 +36,12 @@ import { Team } from '../shared/models/team.model';
   styleUrl: './add-person-dialog.component.css',
 })
 export class AddPersonDialogComponent implements OnInit {
-  addPersonForm: FormGroup = new FormGroup({});
+  addPersonForm: FormGroup = new FormGroup({
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    title: new FormControl('', [Validators.required]),
+    team: new FormControl('', [Validators.required]),
+  });
   titles = new FormControl();
   titlesList: string[] = ['Software Engineer', 'Quality Engineer'];
   teams: Team[] = [];
@@ -42,10 +49,12 @@ export class AddPersonDialogComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<AddPersonDialogComponent>,
     private teamService: TeamService,
+    private memberService: MemberServiceService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   ngOnInit(): void {
+    console.log('Data', this.data);
     this.teamService.teams.subscribe((teams) => {
       this.teams = teams;
     });
@@ -58,7 +67,12 @@ export class AddPersonDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.addPersonForm.value);
+    const { firstName, lastName, title, team } = this.addPersonForm.value;
+    const newPerson = new Member(firstName, lastName, title, team);
+    this.memberService.addNewMember(newPerson).subscribe((res) => {
+      console.log('New person added successfully', res);
+    });
+    this.dialogRef.close(newPerson);
   }
 
   onCancel() {

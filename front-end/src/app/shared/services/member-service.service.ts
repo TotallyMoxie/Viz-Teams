@@ -21,13 +21,8 @@ export class MemberServiceService {
     return this.http.put(`${this.baseUrl}/api/v1/member/${member.id}`, member);
   }
 
-  getMembers(): any {
-    return this.http
-      .get(`${this.baseUrl}/api/v1/members`)
-      .subscribe((response) => {
-        console.log('Members fetched successfully', response);
-        return { response };
-      });
+  getMembers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/api/v1/members`);
   }
 
   getMemberById(id: number): Observable<any> {

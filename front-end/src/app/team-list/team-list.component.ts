@@ -56,7 +56,7 @@ export class TeamListComponent {
   ) {}
 
   ngOnInit() {
-    this.teamSubscription = this.teamService.teams.subscribe((teams) => {
+    this.teamService.teams.subscribe((teams) => {
       this.teams = teams;
     });
 
