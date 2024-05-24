@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
-import { MoveTeamService } from '../team-list/move-teams.service';
+import { MoveTeamService } from '../shared/services/move-teams.service';
 import { DialogOverviewExampleDialog } from '../team-dialog/team-dialog.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
