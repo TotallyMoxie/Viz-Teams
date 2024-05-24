@@ -19,6 +19,10 @@ import {
 } from '../team-dialog/team-dialog.component';
 
 import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog.component';
+<<<<<<< HEAD
+=======
+import { MoveTeamService } from '../shared/services/move-teams.service';
+>>>>>>> 0c9e64cae254fdb6206e1e4626406a7c4bfc6826
 
 import { CommonModule } from '@angular/common';
 import { TeamService } from '../shared/services/team-service.service';
@@ -37,6 +41,7 @@ import { MoveTeamService } from '../shared/services/move-teams.service';
     MatTooltipModule,
     MatAccordion,
     CommonModule,
+
   ],
   templateUrl: './team-list.component.html',
   styleUrls: ['./team-list.component.css'],
@@ -59,18 +64,18 @@ export class TeamListComponent {
           members: [
             { name: 'Alice', image: '' },
             { name: 'Bob', image: '' },
-            { name: 'Charlie', image: '' }
-          ]
+            { name: 'Charlie', image: '' },
+          ],
         },
         {
           name: 'Team B',
           members: [
             { name: 'David', image: '' },
             { name: 'Eve', image: '' },
-            { name: 'Frank', image: '' }
-          ]
+            { name: 'Frank', image: '' },
+          ],
         },
-        {name: 'Team C', members: []}
+        { name: 'Team C', members: [] },
       ];
     }
   }
@@ -90,13 +95,10 @@ export class TeamListComponent {
     localStorage.clear();
     this.teams = []; // Clear the teams array in the component
   }
-  selectTeam(team) {
-    this.MoveTeamService.selectTeams(team);
-    console.log(this.MoveTeamService.selectedTeam);
-    }
+  // selectTeam(team) {
+  //   this.MoveTeamService.selectTeams(team);
+  //   console.log(this.MoveTeamService.selectedTeam);
+  //   }
 }
 
-
-
 export class TeamDialogComponent {}
-

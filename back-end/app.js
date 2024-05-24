@@ -22,7 +22,7 @@ const limiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 const corsOptions = {
-	origin: process.env.FRONTEND_URL,
+	origin: process.env.CORS_ORIGIN,
 	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 	allowedHeaders: ["Content-Type", "Authorization"],
 	credentials: true,
@@ -62,6 +62,7 @@ app.use(sanitize);
 // * ROUTES
 app.use("/api/v1/auth", require("./routes/auth.routes"));
 app.use("/api/v1/team", require("./routes/team.routes"));
+app.use("/api/v1/member", require("./routes/member.routes"));
 // app.get("*", (req, res) => {
 // 	res.sendFile(`index.html`, { root: www });
 // });
