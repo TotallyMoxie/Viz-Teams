@@ -4,11 +4,9 @@
   <mat-divider class="divider"></mat-divider>
 
   <mat-card-content>
-
-    <mat-expansion-panel *ngFor="let team of this.teamService.teams">
+    <mat-expansion-panel *ngFor="let team of this.teams">
       <mat-expansion-panel-header class="expansionList">
-        {{team.teamName}}
-
+        {{ team.name }}
       </mat-expansion-panel-header>
       <div class="memberContainer">
         <div
@@ -66,7 +64,12 @@
   <div class="action-row">
     <mat-action-row>
       <button (click)="clearLocalStorage()">Clear Local Storage</button>
-      <button (click)="openDialog()" class="add-button" mat-button matTooltip="Add Team" >
+      <button
+        (click)="openDialog()"
+        class="add-button"
+        mat-button
+        matTooltip="Add Team"
+      >
         <mat-icon class="addBox">add_box</mat-icon>
       </button>
     </mat-action-row>

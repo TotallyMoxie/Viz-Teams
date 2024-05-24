@@ -23,6 +23,8 @@ import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog
 import { CommonModule } from '@angular/common';
 import { TeamService } from '../shared/services/team-service.service';
 import { MoveTeamService } from '../shared/services/move-teams.service';
+import { Subscription } from 'rxjs';
+import { Team } from '../shared/models/team.model';
 
 @Component({
   selector: 'app-team-list',
@@ -42,11 +44,26 @@ import { MoveTeamService } from '../shared/services/move-teams.service';
   styleUrls: ['./team-list.component.css'],
 })
 export class TeamListComponent {
+  teamSubscription: Subscription;
   message: any;
   teams: any;
-  constructor(public dialog: MatDialog, public teamService: TeamService, public MoveTeamService: MoveTeamService) {}
+  constructor(
+    public dialog: MatDialog,
+    public teamService: TeamService,
+    public MoveTeamService: MoveTeamService
+  ) {}
 
   ngOnInit() {
+    this.teamSubscription = this.teamService.teams.subscribe((teams) => {
+      this.teams = teams;
+    });
+
+    this.teamService.getTeams().subscribe((res) => {
+      let { teams } = res;
+      this.teamService.teams.next(teams);
+      console.log(this.teams);
+    });
+
     // Check if there are teams stored in local storage
     const storedTeams = localStorage.getItem('teams');
     if (storedTeams) {
@@ -54,23 +71,23 @@ export class TeamListComponent {
     } else {
       // If no teams are stored, initialize with default data
       this.teams = [
-        {
-          name: 'Team A',
-          members: [
-            { name: 'Alice', image: '' },
-            { name: 'Bob', image: '' },
-            { name: 'Charlie', image: '' }
-          ]
-        },
-        {
-          name: 'Team B',
-          members: [
-            { name: 'David', image: '' },
-            { name: 'Eve', image: '' },
-            { name: 'Frank', image: '' }
-          ]
-        },
-        {name: 'Team C', members: []}
+        // {
+        //   name: 'Team A',
+        //   members: [
+        //     { name: 'Alice', image: '' },
+        //     { name: 'Bob', image: '' },
+        //     { name: 'Charlie', image: '' },
+        //   ],
+        // },
+        // {
+        //   name: 'Team B',
+        //   members: [
+        //     { name: 'David', image: '' },
+        //     { name: 'Eve', image: '' },
+        //     { name: 'Frank', image: '' },
+        //   ],
+        // },
+        // { name: 'Team C', members: [] },
       ];
     }
   }
@@ -93,9 +110,5 @@ export class TeamListComponent {
   selectTeam(team) {
     this.MoveTeamService.selectTeams(team);
     console.log(this.MoveTeamService.selectedTeam);
-    }
+  }
 }
-
-
-
-
