@@ -25,6 +25,16 @@
         </div>
       </div>
     </mat-card-content>
+    <mat-divider class="divider2"></mat-divider>
+
+    <div class="action-row">
+
+      <mat-action-row>
+        <button (click)="openDialog()" class="add-button" mat-button matTooltip="Add Team" >
+          <mat-icon class="addBox">add_box</mat-icon>
+        </button>
+      </mat-action-row>
+    </div>
   </mat-card>
 </div>
 
@@ -37,8 +47,27 @@
       <mat-card-title >{{MoveTeamService.selectedTeam.name}} > {{ selectedMember.name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <!-- Add any additional member information here -->
+      <div class="member-info">
+        <div class="member-image">
+          <img class="memberIcon" *ngIf="selectedMember.picture" [src]="selectedMember.picture" [alt]="selectedMember.name" width="100" height="100" matTooltip="{{selectedMember.name}}" matTooltipPosition="above">
+          <img class="memberIcon" *ngIf="!selectedMember.picture" src="../../assets/avatar.png" [alt]="selectedMember.name" width="100" height="100" matTooltip="{{selectedMember.name}}" matTooltipPosition="above">
+        </div>
+        <div class="member-name">{{ selectedMember.name }}</div>
+        <div class="member-email">{{ selectedMember.email }}</div>
+        <div class="member-phone">{{ selectedMember.phone }}</div>
+      </div>
     </mat-card-content>
-  </mat-card>
-</div>
 
+
+
+<mat-divider class="divider2"></mat-divider>
+
+  <div class="action-row">
+
+    <mat-action-row>
+      <button (click)="openDialog()" class="add-button" mat-button matTooltip="Add Team" >
+        <mat-icon class="addBox">add_box</mat-icon>
+      </button>
+    </mat-action-row>
+  </div>
+</mat-card>

@@ -7,11 +7,18 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
+import { MatButton } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-info-container',
   standalone: true,
-  imports: [MatCardModule, CommonModule,MatIcon, MatTooltip],
+  imports: [MatCardModule, CommonModule,MatIcon, MatTooltip, MatButton, MatCardModule, MatDividerModule, MatAccordion, MatExpansionModule, MatButtonModule, MatIconModule, MatTooltipModule],
   templateUrl: './info-container.component.html',
   styleUrl: './info-container.component.css',
 })
