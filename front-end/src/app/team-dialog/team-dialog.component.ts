@@ -18,6 +18,7 @@ import { TeamService } from '../shared/services/team-service.service';
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { Plural } from '@angular/common';
 
 NgModule({
   declarations: [AppComponent],
