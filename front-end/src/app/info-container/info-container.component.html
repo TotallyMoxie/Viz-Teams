@@ -16,8 +16,8 @@
       <mat-card-title class="team-name">{{ this.MoveTeamService.selectedTeam.name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div class="team-members-table">
-        <div class="team-member" *ngFor="let member of this.MoveTeamService.selectedTeam.members">
+      <div class="team-members-table" >
+        <div class="team-member" *ngFor="let member of this.MoveTeamService.selectedTeam.members" (click)="memberInfo(member)">
           <div class="team-member-image">
             <img class="memberIcon" *ngIf="!member.picture" src="../../assets/avatar.png" [alt]="member.name" width="50" height="50" matTooltip="{{member.name}}" matTooltipPosition="above">
           </div>
@@ -25,5 +25,56 @@
         </div>
       </div>
     </mat-card-content>
+    <mat-divider class="divider2"></mat-divider>
+
+    <div class="action-row">
+
+      <mat-action-row>
+        <button (click)="openDialog()" class="archive" mat-button matTooltip="archive" >
+          <mat-icon class="archiveBox">archive</mat-icon>
+        </button>
+        <button (click)="openDialog()" class="mode_edit" mat-button matTooltip="mode_edit" >
+          <mat-icon class="mode_editBox">mode_edit</mat-icon>
+        </button>
+      </mat-action-row>
+    </div>
+  </mat-card>
+</div>
+
+
+
+
+<div *ngIf="selectedMember">
+  <mat-card class="info-card">
+    <mat-card-header (click)="returnToTeam(selectedMember)">
+      <mat-card-title >{{MoveTeamService.selectedTeam.name}} > {{ selectedMember.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="member-info">
+        <div class="member-image">
+          <img class="memberIcon" *ngIf="selectedMember.picture" [src]="selectedMember.picture" [alt]="selectedMember.name" width="100" height="100" matTooltip="{{selectedMember.name}}" matTooltipPosition="above">
+          <img class="memberIcon" *ngIf="!selectedMember.picture" src="../../assets/avatar.png" [alt]="selectedMember.name" width="100" height="100" matTooltip="{{selectedMember.name}}" matTooltipPosition="above">
+        </div>
+        <div class="member-name">{{ selectedMember.name }}</div>
+        <div class="member-email">{{ selectedMember.email }}</div>
+        <div class="member-phone">{{ selectedMember.phone }}</div>
+      </div>
+    </mat-card-content>
+
+
+
+    <mat-divider class="divider2"></mat-divider>
+
+    <div class="action-row">
+
+      <mat-action-row>
+        <button (click)="openDialog()" class="archive" mat-button matTooltip="archive" >
+          <mat-icon class="archiveBox">archive</mat-icon>
+        </button>
+        <button (click)="openDialog()" class="mode_edit" mat-button matTooltip="mode_edit" >
+          <mat-icon class="mode_editBox">mode_edit</mat-icon>
+        </button>
+      </mat-action-row>
+    </div>
   </mat-card>
 </div>

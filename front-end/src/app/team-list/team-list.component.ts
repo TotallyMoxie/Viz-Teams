@@ -20,10 +20,10 @@ import {
 } from '../team-dialog/team-dialog.component';
 
 import { AddPersonDialogComponent } from '../add-person-dialog/add-person-dialog.component';
-import { MoveTeamService } from './move-teams.service';
 
 import { CommonModule } from '@angular/common';
 import { TeamService } from '../shared/services/team-service.service';
+import { MoveTeamService } from '../shared/services/move-teams.service';
 
 @Component({
   selector: 'app-team-list',
@@ -83,7 +83,5 @@ export class TeamListComponent {
 
 
 
-export class TeamDialogComponent {
-
-}
+export class TeamDialogComponent {}
 

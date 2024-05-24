@@ -9,7 +9,8 @@ const TeamSchema = new Schema({
 	},
 	members: [
 		{
-			type: String,
+			type: Types.ObjectId,
+			ref: "Member",
 		},
 	],
 });
