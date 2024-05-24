@@ -9,6 +9,7 @@ import {
   MatDialogClose,
   MatDialogModule,
 } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -90,16 +91,17 @@ export class DialogOverviewExample {
   ],
   styleUrl: './team-dialog.component.css',
 })
-export class DialogOverviewExampleDialog {
-  description: any | undefined;
-  teamName: string | undefined;
-  http: any;
-  teams: any;
 
- constructor(
+
+export class DialogOverviewExampleDialog {
+  teams: any[];
+  teamName: any;
+  description: any;
+
+  constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private teamService: TeamService
+    private http: HttpClient
   ) {}
 
   onSubmit(): void {
@@ -107,25 +109,18 @@ export class DialogOverviewExampleDialog {
       teamName: this.teamName,
       description: this.description
     };
-    console.log('Team data:', teamData);
-    this.dialogRef.close({ refreshTeams: true });
 
-    const teams = JSON.parse(localStorage.getItem('teams') || '[]');
-    teams.push(teamData);
-    localStorage.setItem('teams', JSON.stringify(teams));
-
-    this.dialogRef.close();
+    this.http.post('https://viz-teams-1.onrender.com/', teamData)
+      .subscribe(
+        (response) => {
+          console.log('Team created:', response);
+          this.dialogRef.close({ refreshTeams: true });
+        },
+        (error) => {
+          console.error('Error creating team:', error);
+        }
+      );
   }
 
-  loadTeamsFromLocalStorage() {
-    const storedTeams = localStorage.getItem('teams');
-    if (storedTeams) {
-      this.teams = JSON.parse(storedTeams);
-    } else {
-      this.teams = [];
-    }
-  }
-
-
-
+  // Other methods for dialog operations
 }

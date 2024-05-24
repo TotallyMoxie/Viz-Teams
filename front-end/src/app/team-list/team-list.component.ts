@@ -5,6 +5,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -43,6 +44,7 @@ import { Team } from '../shared/models/team.model';
   templateUrl: './team-list.component.html',
   styleUrls: ['./team-list.component.css'],
 })
+
 export class TeamListComponent {
   teamSubscription: Subscription;
   message: any;
@@ -102,10 +104,6 @@ export class TeamListComponent {
     this.dialog.open(AddPersonDialogComponent, {
       data: { teamName: team.name },
     });
-  }
-  clearLocalStorage() {
-    localStorage.clear();
-    this.teams = []; // Clear the teams array in the component
   }
   selectTeam(team) {
     this.MoveTeamService.selectTeams(team);
