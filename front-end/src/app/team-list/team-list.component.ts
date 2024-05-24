@@ -5,6 +5,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -41,38 +42,26 @@ import { TeamService } from '../shared/services/team-service.service';
   templateUrl: './team-list.component.html',
   styleUrls: ['./team-list.component.css'],
 })
+
 export class TeamListComponent {
   message: any;
   teams: any;
-  constructor(public dialog: MatDialog, public teamService: TeamService) {}
+  constructor(public dialog: MatDialog, public teamService: TeamService, private MoveTeamService: MoveTeamService, private http: HttpClient) {}
 
   ngOnInit() {
-    // Check if there are teams stored in local storage
-    const storedTeams = localStorage.getItem('teams');
-    if (storedTeams) {
-      this.teams = JSON.parse(storedTeams);
-    } else {
-      // If no teams are stored, initialize with default data
-      this.teams = [
-        {
-          name: 'Team A',
-          members: [
-            { name: 'Alice', image: '' },
-            { name: 'Bob', image: '' },
-            { name: 'Charlie', image: '' }
-          ]
+    this.getTeams();
+  }
+
+  getTeams(): void {
+    this.http.get<any>('https://viz-teams-1.onrender.com/')
+      .subscribe(
+        (response) => {
+          this.teams = response.teams;
         },
-        {
-          name: 'Team B',
-          members: [
-            { name: 'David', image: '' },
-            { name: 'Eve', image: '' },
-            { name: 'Frank', image: '' }
-          ]
-        },
-        {name: 'Team C', members: []}
-      ];
-    }
+        (error) => {
+          console.error('Error fetching teams:', error);
+        }
+      );
   }
   openDialog(): void {
     this.dialog.open(DialogOverviewExampleDialog, {
@@ -86,10 +75,6 @@ export class TeamListComponent {
       data: { teamName: team.name },
     });
   }
-  clearLocalStorage() {
-    localStorage.clear();
-    this.teams = []; // Clear the teams array in the component
-  }
   selectTeam(team) {
     this.MoveTeamService.selectTeams(team);
     console.log(this.MoveTeamService.selectedTeam);
@@ -98,5 +83,7 @@ export class TeamListComponent {
 
 
 
-export class TeamDialogComponent {}
+export class TeamDialogComponent {
+
+}
 
