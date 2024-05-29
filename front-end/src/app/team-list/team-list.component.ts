@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+
 import {
   DialogData,
   DialogOverviewExampleDialog,
@@ -46,6 +47,9 @@ import { Team } from '../shared/models/team.model';
 })
 
 export class TeamListComponent {
+clearLocalStorage() {
+throw new Error('Method not implemented.');
+}
   teamSubscription: Subscription;
   message: any;
   teams: any;

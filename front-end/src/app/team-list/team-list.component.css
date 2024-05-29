@@ -30,18 +30,19 @@
   height: 100%;
 }
 
-.divider2 {
+.bottomDivider {
   width: 100%;
-  bottom: 50px;
+  margin-bottom: 1.5rem;
+  color: black;
 }
 
-.action-row {
+.bottomActionRow {
   position: absolute;
-  bottom: 6px;
-  right: 5px;
+  bottom: 0px;
   margin: 0;
   padding: 0;
   width: 100%;
+  border-top: black 2px solid;
 }
 
 .action-row2 {
@@ -57,6 +58,7 @@
 .addMember {
   margin: 0;
   padding: 0;
+  color: rgb(115, 115, 115);
 }
 .members {
   display: flex;
@@ -92,4 +94,10 @@
   font-size: xx-large;
   color: rgb(128, 128, 128);
   padding: 16px;
+}
+
+.add-button {
+ margin-left: 90%;
+  bottom: 0;
+  right: 0;
 }
