@@ -38,11 +38,11 @@
 
 .bottomActionRow {
   position: absolute;
-  bottom: 0px;
+  bottom: 6px;
   margin: 0;
   padding: 0;
   width: 100%;
-  border-top: black 2px solid;
+  border-top: lightgray 2px solid;
 }
 
 .action-row2 {
@@ -97,7 +97,8 @@
 }
 
 .add-button {
- margin-left: 90%;
+  margin-left: 90%;
+  margin-top: 10px;
   bottom: 0;
   right: 0;
 }
