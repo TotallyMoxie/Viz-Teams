@@ -46,6 +46,9 @@ import { Team } from '../shared/models/team.model';
 })
 
 export class TeamListComponent {
+clearLocalStorage() {
+throw new Error('Method not implemented.');
+}
   teamSubscription: Subscription;
   message: any;
   teams: any;
